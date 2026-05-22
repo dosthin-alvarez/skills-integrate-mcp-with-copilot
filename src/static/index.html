@@ -12,11 +12,20 @@
       <h2>Extracurricular Activities</h2>
     </header>
 
+    <section id="role-selector">
+      <h3>Your Role</h3>
+      <div class="role-switcher">
+        <button type="button" class="role-btn active" data-role="parent">Parent</button>
+        <button type="button" class="role-btn" data-role="provider">Provider</button>
+        <button type="button" class="role-btn" data-role="admin">Admin</button>
+      </div>
+      <p id="role-description">As a parent, you can sign up students for activities and manage registrations.</p>
+    </section>
+
     <main>
       <section id="activities-container">
         <h3>Available Activities</h3>
         <div id="activities-list">
-          <!-- Activities will be loaded here -->
           <p>Loading activities...</p>
         </div>
       </section>
@@ -32,12 +41,43 @@
             <label for="activity">Select Activity:</label>
             <select id="activity" required>
               <option value="">-- Select an activity --</option>
-              <!-- Activity options will be loaded here -->
             </select>
           </div>
           <button type="submit">Sign Up</button>
         </form>
         <div id="message" class="hidden"></div>
+      </section>
+
+      <section id="provider-dashboard" class="hidden">
+        <h3>Provider Dashboard</h3>
+        <p>Publish and manage extracurricular activities for the school.</p>
+        <div id="provider-summary" class="info"></div>
+        <form id="create-activity-form">
+          <div class="form-group">
+            <label for="new-activity-name">Activity Name:</label>
+            <input type="text" id="new-activity-name" required placeholder="e.g. Coding Workshop" />
+          </div>
+          <div class="form-group">
+            <label for="new-activity-description">Description:</label>
+            <input type="text" id="new-activity-description" required placeholder="Short activity description" />
+          </div>
+          <div class="form-group">
+            <label for="new-activity-schedule">Schedule:</label>
+            <input type="text" id="new-activity-schedule" required placeholder="e.g. Wednesdays, 4:00 PM" />
+          </div>
+          <div class="form-group">
+            <label for="new-activity-max">Max Participants:</label>
+            <input type="number" id="new-activity-max" required min="1" placeholder="20" />
+          </div>
+          <button type="submit">Create Activity</button>
+        </form>
+      </section>
+
+      <section id="admin-dashboard" class="hidden">
+        <h3>Admin Dashboard</h3>
+        <p>Review platform metrics and remove outdated activities.</p>
+        <div id="admin-summary" class="info"></div>
+        <div id="admin-activity-list"></div>
       </section>
     </main>
 

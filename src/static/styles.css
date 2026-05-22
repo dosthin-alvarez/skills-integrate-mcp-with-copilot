@@ -125,6 +125,32 @@ section h3 {
   background-color: #ffebee;
 }
 
+.role-switcher {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.role-btn {
+  background-color: #e8eaf6;
+  color: #1a237e;
+  border: 1px solid #1a237e;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.role-btn.active {
+  background-color: #1a237e;
+  color: white;
+}
+
+#role-description {
+  margin-top: 10px;
+  color: #555;
+}
+
 .participants-section p {
   color: #777;
   font-style: italic;

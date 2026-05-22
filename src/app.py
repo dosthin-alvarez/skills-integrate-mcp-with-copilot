@@ -130,3 +130,32 @@ def unregister_from_activity(activity_name: str, email: str):
     # Remove student
     activity["participants"].remove(email)
     return {"message": f"Unregistered {email} from {activity_name}"}
+
+
+@app.post("/activities")
+def create_activity(name: str, description: str, schedule: str, max_participants: int):
+    """Create a new extracurricular activity"""
+    if not name.strip():
+        raise HTTPException(status_code=400, detail="Activity name is required")
+
+    if name in activities:
+        raise HTTPException(status_code=400, detail="Activity already exists")
+
+    activities[name] = {
+        "description": description,
+        "schedule": schedule,
+        "max_participants": max_participants,
+        "participants": [],
+    }
+
+    return {"message": f"Created activity {name}", "activity": activities[name]}
+
+
+@app.delete("/activities/{activity_name}")
+def delete_activity(activity_name: str):
+    """Delete an activity from the platform"""
+    if activity_name not in activities:
+        raise HTTPException(status_code=404, detail="Activity not found")
+
+    del activities[activity_name]
+    return {"message": f"Deleted activity {activity_name}"}
